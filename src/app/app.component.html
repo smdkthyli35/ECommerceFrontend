@@ -1,3 +1,10 @@
-<router-outlet></router-outlet>
-
-<h1>Merhaba</h1>
+<app-nav-bar></app-nav-bar>
+<div style="margin-top:100px" class="container">
+    <h3 class="text-center">E-Ticaret Sitemize Hoşgeldiniz!</h3>
+    <ul>
+        <li class="list-unstyled" *ngFor="let product of products">
+            {{product.name}}
+        </li>
+    </ul>
+    <router-outlet></router-outlet>
+</div>
