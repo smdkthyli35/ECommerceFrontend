@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Brand } from '../shared/models/brand';
 import { Product } from '../shared/models/product';
 import { ProductType } from '../shared/models/productType';
@@ -15,12 +16,27 @@ export class ShopComponent implements OnInit {
   brands:Brand[];
   types:ProductType[];
 
-  constructor(private shopService:ShopService) { }
+  dataLoaded = false;
+
+  currentBrand: Brand;
+  currentType: ProductType;
+
+  constructor(private shopService:ShopService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
     this.getTypes();
+    // this.activatedRoute.params.subscribe(params=>{
+    //   if(params["brandId"]) {
+    //     this.getProductsByBrand(params["brandId"])
+    //   } else if(params["typeId"]) {
+    //     this.getProductsByType(params["typeId"])
+    //   }
+    //   else {
+    //     this.getProducts();
+    //   }
+    // })
   }
 
   getProducts() {
@@ -45,5 +61,58 @@ export class ShopComponent implements OnInit {
     })
   }
 
+  setCurrentBrand(brand:Brand) {
+    this.currentBrand = brand;
+  }
+
+  getCurrentBrandClass(brand:Brand) {
+    if (brand == this.currentBrand) {
+      return "list-group-item active"
+    } else {
+      return "list-group-item"
+    }
+  }
+
+  getAllBrandClass() {
+    if (!this.currentBrand) {
+      return "list-group-item active"
+    } else {
+      return "list-group-item"
+    }
+  }
+
+  setCurrentType(type: ProductType) {
+    this.currentType = type;
+  }
+
+  getCurrentTypeClass(type:ProductType) {
+    if (type == this.currentType) {
+      return "list-group-item active"
+    } else {
+      return "list-group-item"
+    }
+  }
+
+  getAllTypeClass() {
+    if (!this.currentType) {
+      return "list-group-item active"
+    } else{
+      return "list-group-item"
+    }
+  }
+
+  getProductsByBrand(brandId:number) {
+    this.shopService.getProductsByBrand(brandId).subscribe(response=>{
+      this.brands = response.data
+      this.dataLoaded = true;
+    })
+  }
+
+  getProductsByType(typeId:number) {
+    this.shopService.getProductsByType(typeId).subscribe(response=>{
+      this.types = response.data
+      this.dataLoaded = true;
+    })
+  }
 
 }

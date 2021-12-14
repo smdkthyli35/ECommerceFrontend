@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brand } from '../shared/models/brand';
@@ -26,5 +26,13 @@ baseUrl = "https://localhost:44310/api";
 
   getTypes() : Observable<ListResponseModel<ProductType>> {
     return this.http.get<ListResponseModel<ProductType>>(this.baseUrl + "/producttypes/types");
+  }
+
+  getProductsByBrand(brandId:number) : Observable<ListResponseModel<Product>> {
+    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbybrandid?brandId' + brandId);
+  }
+
+  getProductsByType(typeId:number) : Observable<ListResponseModel<Product>> {
+    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbytypeid?typeId' + typeId);
   }
 }
