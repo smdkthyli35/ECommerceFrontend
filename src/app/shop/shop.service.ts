@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Brand } from '../shared/models/brand';
 import { ListResponseModel } from '../shared/models/listResponseModel';
 import { Product } from '../shared/models/product';
+import { ProductType } from '../shared/models/productType';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +18,13 @@ baseUrl = "https://localhost:44310/api";
 
   getProducts():Observable<ListResponseModel<Product>> {
     return this.http.get<ListResponseModel<Product>>(this.baseUrl + "/products/getproductdetails");
+  }
+
+  getBrands():Observable<ListResponseModel<Brand>> {
+    return this.http.get<ListResponseModel<Brand>>(this.baseUrl + "/productbrands/brands");
+  }
+
+  getTypes() : Observable<ListResponseModel<ProductType>> {
+    return this.http.get<ListResponseModel<ProductType>>(this.baseUrl + "/producttypes/types");
   }
 }

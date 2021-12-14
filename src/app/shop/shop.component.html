@@ -3,23 +3,11 @@
     <section class="col-3">
       <ul class="list-group mb-3">
         <h5 class="text-success text-center mb-2">Markalar</h5>
-        <li class="list-group-item active" aria-current="true">
-          An active item
-        </li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li style="cursor: pointer;" class="list-group-item" *ngFor="let brand of brands">{{brand.name}}</li>
       </ul>
       <ul class="list-group">
         <h5 class="text-success text-center mb-2">Modeller</h5>
-        <li class="list-group-item active" aria-current="true">
-          An active item
-        </li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li style="cursor: pointer;" class="list-group-item" *ngFor="let type of types">{{type.name}}</li>
       </ul>
     </section>
     <section class="col-9">

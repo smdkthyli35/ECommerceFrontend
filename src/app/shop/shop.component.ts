@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Brand } from '../shared/models/brand';
 import { Product } from '../shared/models/product';
+import { ProductType } from '../shared/models/productType';
 import { ShopService } from './shop.service';
 
 @Component({
@@ -10,10 +12,15 @@ import { ShopService } from './shop.service';
 export class ShopComponent implements OnInit {
 
   products:Product[];
+  brands:Brand[];
+  types:ProductType[];
+
   constructor(private shopService:ShopService) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getBrands();
+    this.getTypes();
   }
 
   getProducts() {
@@ -24,4 +31,19 @@ export class ShopComponent implements OnInit {
       console.log(err);
     })
   }
+
+  getBrands() {
+    return this.shopService.getBrands().subscribe(response=>{
+      this.brands = response.data;
+    })
+  }
+
+  
+  getTypes() {
+    return this.shopService.getTypes().subscribe(response=>{
+      this.types = response.data;
+    })
+  }
+
+
 }
