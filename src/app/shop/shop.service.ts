@@ -12,12 +12,17 @@ import { ProductType } from '../shared/models/productType';
 })
 export class ShopService {
 
-baseUrl = "https://localhost:44310/api";
+  private baseUrl:string = "https://localhost:44310/api";
 
   constructor(private http:HttpClient) { }
 
   getProducts():Observable<ListResponseModel<Product>> {
     return this.http.get<ListResponseModel<Product>>(this.baseUrl + "/products/getproductdetails");
+  }
+
+  
+  getProductsDetails(productId:number) {
+    return this.http.get<Product>(this.baseUrl + '/products/' + productId);
   }
 
   getBrands():Observable<ListResponseModel<Brand>> {

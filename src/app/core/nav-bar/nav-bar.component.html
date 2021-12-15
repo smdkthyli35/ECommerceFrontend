@@ -1,10 +1,11 @@
 <div class="container-fluid bg-light d-flex flex-column flex-md-row align-items-center justify-content-center pb-3 mb-4 border-bottom fixed-top">
-    <img src="/assets/images/logo.png" class="mt-1 mx-3" style="max-height:60px;" alt="logo">
+    <img [routerLink]="['/']" src="/assets/images/logo.png" class="mt-1 mx-3" style="max-height:60px;" alt="logo">
     
     <nav class="mt-2 mt-md-0 ms-md-auto" style="font-size:larger">
-      <a class="me-4 py-2 text-dark text-decoration-none" href="#">Ana Sayfa</a>
-      <a class="me-4 py-2 text-dark text-decoration-none" href="#">Ürünler</a>
-      <a class="me-4 py-2 text-dark text-decoration-none" href="#">İletişim</a>
+      <a class="me-4 py-2 text-decoration-none" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}" >Ana Sayfa</a>
+      <a class="me-4 py-2 text-decoration-none" [routerLink]="['/shop']" routerLinkActive="active">Ürünler</a>
+      <a class="me-4 py-2 text-decoration-none" [routerLink]="['/']" >İletişim</a>
     </nav>
     <div class="d-flex align-items-center">
         <a class="position-relative">
