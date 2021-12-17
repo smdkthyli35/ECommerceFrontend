@@ -20,9 +20,8 @@ export class ShopService {
     return this.http.get<ListResponseModel<Product>>(this.baseUrl + "/products/getproductdetails");
   }
 
-  
   getProductsDetails(productId:number) {
-    return this.http.get<Product>(this.baseUrl + '/products/' + productId);
+    return this.http.get<Product>(this.baseUrl + '/products/getproductdetailsid?productId' + productId);
   }
 
   getBrands():Observable<ListResponseModel<Brand>> {
@@ -33,11 +32,11 @@ export class ShopService {
     return this.http.get<ListResponseModel<ProductType>>(this.baseUrl + "/producttypes/types");
   }
 
-  getProductsByBrand(brandId:number) : Observable<ListResponseModel<Product>> {
-    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbybrandid?brandId' + brandId);
+  getProductsByBrand(productBrandId:number) : Observable<ListResponseModel<Product>> {
+    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbybrandid?productBrandId' + productBrandId);
   }
 
-  getProductsByType(typeId:number) : Observable<ListResponseModel<Product>> {
-    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbytypeid?typeId' + typeId);
+  getProductsByType(productTypeId:number) : Observable<ListResponseModel<Product>> {
+    return this.http.get<ListResponseModel<Product>>(this.baseUrl + '/products/getproductsbytypeid?productTypeId' + productTypeId);
   }
 }

@@ -27,16 +27,16 @@ export class ShopComponent implements OnInit {
     this.getProducts();
     this.getBrands();
     this.getTypes();
-    // this.activatedRoute.params.subscribe(params=>{
-    //   if(params["brandId"]) {
-    //     this.getProductsByBrand(params["brandId"])
-    //   } else if(params["typeId"]) {
-    //     this.getProductsByType(params["typeId"])
-    //   }
-    //   else {
-    //     this.getProducts();
-    //   }
-    // })
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["productBrandId"]) {
+        this.getProductsByBrand(params["productBrandId"])
+      } else if(params["productTypeId"]) {
+        this.getProductsByType(params["productTypeId"])
+      }
+      else {
+        this.getProducts();
+      }
+    })
   }
 
   getProducts() {

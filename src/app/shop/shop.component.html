@@ -3,11 +3,11 @@
     <section class="col-3">
       <ul class="list-group mb-3">
         <h5 class="text-success text-center mb-2">Markalar</h5>
-        <li style="cursor: pointer;" class="list-group-item" *ngFor="let brand of brands">{{brand.name}}</li>
+        <li style="cursor: pointer;" class="list-group-item" (click)="setCurrentBrand(brand)" routerLink="/shop/brand/{{brand.productBrandId}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.name}}</li>
       </ul>
       <ul class="list-group">
         <h5 class="text-success text-center mb-2">Modeller</h5>
-        <li style="cursor: pointer;" class="list-group-item" *ngFor="let type of types">{{type.name}}</li>
+        <li style="cursor: pointer;" class="list-group-item" (click)="setCurrentType(type)" routerLink="/shop/type/{{type.productTypeId}}" *ngFor="let type of types" [class]="getCurrentTypeClass(type)">{{type.name}}</li>
       </ul>
     </section>
     <section class="col-9">
